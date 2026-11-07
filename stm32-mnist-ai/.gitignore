@@ -1,0 +1,9 @@
+build/
+build_host/
+tools/data/mnist.npz
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map

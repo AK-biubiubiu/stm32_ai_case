@@ -1,0 +1,19 @@
+{
+  "cmake.useCMakePresets": "always",
+  "cmake.configureOnOpen": true,
+  "cmake.buildDirectory": "${workspaceFolder}/build/${presetName}",
+
+  "armToolchainPath": "",
+  "openocdPath": "openocd",
+
+  "C_Cpp.default.compilerPath": "${config:armToolchainPath}/arm-none-eabi-gcc.exe",
+  "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.default.intelliSenseMode": "gcc-arm",
+  "C_Cpp.default.defines": [
+    "STM32F10X_HD",
+    "USE_STDPERIPH_DRIVER"
+  ],
+  "files.associations": {
+    "*.h": "c"
+  }
+}

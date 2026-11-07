@@ -1,0 +1,66 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "configure debug",
+      "type": "shell",
+      "command": "cmake --preset debug",
+      "problemMatcher": []
+    },
+    {
+      "label": "build debug",
+      "type": "shell",
+      "command": "cmake --build --preset debug",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "dependsOn": "configure debug"
+    },
+    {
+      "label": "build release",
+      "type": "shell",
+      "command": "cmake --build --preset release",
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "dependsOn": {
+        "type": "shell",
+        "command": "cmake --preset release"
+      }
+    },
+    {
+      "label": "flash (OpenOCD)",
+      "type": "shell",
+      "command": "openocd",
+      "args": [
+        "-f", "interface/cmsis-dap.cfg",
+        "-f", "target/stm32f1x.cfg",
+        "-c", "program build/debug/stm32_mnist_ai.elf verify reset exit"
+      ],
+      "dependsOn": "build debug",
+      "problemMatcher": []
+    },
+    {
+      "label": "train model",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "tools/train_mnist.py"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "host test",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "tools/host_test.py"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

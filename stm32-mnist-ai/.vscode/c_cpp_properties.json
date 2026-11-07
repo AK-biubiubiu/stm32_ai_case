@@ -1,0 +1,33 @@
+{
+  "version": 4,
+  "configurations": [
+    {
+      "name": "STM32F103",
+      "configurationProvider": "ms-vscode.cmake-tools",
+      "compilerPath": "${config:armToolchainPath}/arm-none-eabi-gcc.exe",
+      "intelliSenseMode": "gcc-arm",
+      "cStandard": "c11",
+      "defines": [
+        "STM32F10X_HD",
+        "USE_STDPERIPH_DRIVER"
+      ],
+      "includePath": [
+        "${workspaceFolder}/User",
+        "${workspaceFolder}/App",
+        "${workspaceFolder}/Model",
+        "${workspaceFolder}/BSP",
+        "${workspaceFolder}/Libraries/**"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/User",
+          "${workspaceFolder}/App",
+          "${workspaceFolder}/Model",
+          "${workspaceFolder}/BSP",
+          "${workspaceFolder}/Libraries"
+        ],
+        "limitSymbolsToIncludedHeaders": true
+      }
+    }
+  ]
+}
